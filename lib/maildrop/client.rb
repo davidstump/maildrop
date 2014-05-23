@@ -6,7 +6,7 @@ module Maildrop
       @client = DropboxClient.new(token)
     end
 
-    def store!(message)
+    def store!(subject, body)
       now = Time.now.strftime("%Y-%m-%d")
       file = "#{now}/#{underscoreize(message.subject)}.html"
       @client.put_file(file, message.body.to_s)
