@@ -8,7 +8,9 @@ module Maildrop
       namespace :maildrop do
         desc 'get dropbox access token'
         task :authorize do
-          authorize_url = Maildrop::Authorizer.url
+          key = Maildrop.configuration.app_key
+          secret = Maildrop.configuration.app_secret
+          authorize_url = Maildrop::Authorizer.url(key, secret)
           Launchy.open(authorize_url)
         end
       end

@@ -2,7 +2,10 @@ module Maildrop
   class Client
 
     def initialize(options={})
-      token = Maildrop::Authorizer.token(Maildrop.configuration.code)
+      key = Maildrop.configuration.app_key
+      secret = Maildrop.configuration.app_secret
+      code = Maildrop.configuration.code
+      token = Maildrop::Authorizer.token(code, key, secret)
       @client = DropboxClient.new(token)
     end
 
