@@ -2,8 +2,8 @@ module Maildrop
   class Authorizer
 
     def self.fetch_flow
-      key = 'wntza3mos2lwywp'
-      secret = 'b0hfxi37k082ed1'
+      key = Maildrop.configuration.app_key
+      secret = Maildrop.configuration.app_secret
       @flow = DropboxOAuth2FlowNoRedirect.new(key, secret)
     end
 
