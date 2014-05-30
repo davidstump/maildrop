@@ -11,7 +11,8 @@ module Maildrop
 
     def store!(subject, body)
       now = Time.now.strftime("%Y-%m-%d")
-      file = "#{now}/#{underscoreize(subject)}.html"
+      format = Maildrop.configuration.format || 'txt'
+      file = "#{now}/#{underscoreize(subject)}.#{format}"
       @client.put_file(file, body.to_s)
 
       # message.attachments.each do |name, attachment|
