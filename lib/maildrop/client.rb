@@ -5,7 +5,7 @@ module Maildrop
       key = Maildrop.configuration.app_key
       secret = Maildrop.configuration.app_secret
       code = Maildrop.configuration.code
-      token = Maildrop::Authorizer.token(code, key, secret)
+      token = find_token
       @client = DropboxClient.new(token)
     end
 
@@ -22,6 +22,12 @@ module Maildrop
 
     def underscoreize(string)
       string.downcase.gsub(" ", "_")
+    end
+
+    private
+
+    def find_token
+      Maildrop.configuration.token || Maildrop::Authorizer.token(code, key, secret)
     end
   end
 end
