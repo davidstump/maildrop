@@ -26,7 +26,7 @@ module Maildrop
     end
 
     def share(path)
-      @client.share(path)
+      @client.shares(path)
     end
 
     private
