@@ -25,6 +25,10 @@ module Maildrop
       string.downcase.gsub(" ", "_")
     end
 
+    def share(path)
+      @client.share(path)
+    end
+
     private
 
     def find_token
